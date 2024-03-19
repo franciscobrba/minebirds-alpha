@@ -1,0 +1,7 @@
+main: com.minebirds.App
+name: Minebirds
+version: 1.0
+commands:
+  mb:
+    description: prefix for minebirds
+    usage: /mb

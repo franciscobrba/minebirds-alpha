@@ -1,0 +1,16 @@
+server/world
+server/world_nether
+server/world_the_end
+server/libraries
+logs
+.DS_Store
+server/*-world
+server/*
+!.Dockerfile
+!server/plugins
+!server/eula.txt
+!server/paper-1.20.4.jar
+!server/server.properties
+!server/spigot.yml
+plugin/minebirds/target
+.archive-unpack

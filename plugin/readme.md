@@ -1,0 +1,1 @@
+mvn package -f "/Users/francisco/mb-env/plugin/minebirds/pom.xml" && cp ~/mb-env/plugin/minebirds/target/minebirds-1.0-SNAPSHOT.jar ~/mb-env/server/plugins/minebirds-1.0-SNAPSHOT.jar && curl -X POST http://127.0.0.1:4567/v1/server/exec -H "Content-Type: application/x-www-form-urlencoded" -H "key: server_tap_password" -d "command=reload confirm"
