@@ -6,7 +6,7 @@ logs
 .DS_Store
 server/*-world
 server/*
-!.Dockerfile
+!server/.Dockerfile
 !server/plugins
 !server/eula.txt
 !server/paper-1.20.4.jar
