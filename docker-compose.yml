@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./server
-      dockerfile: ./Dockerfile
+      dockerfile: ./.Dockerfile
     volumes:
       - ./server/plugins:/plugins
       - ./server/server.properties:/server.properties

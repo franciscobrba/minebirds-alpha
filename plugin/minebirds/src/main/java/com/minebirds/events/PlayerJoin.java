@@ -16,6 +16,7 @@ public class PlayerJoin implements Listener {
 
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent event) {
+    event.getPlayer().sendTitle("", "", 0, 20, 0);
     World world = event.getPlayer().getWorld();
     String worldName = world.getName();
     if (worldName == null) return;
