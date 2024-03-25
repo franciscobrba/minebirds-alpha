@@ -19,7 +19,7 @@ public class Book {
     bookMeta.setAuthor("Cabral Emo");
     String page1 =
       """
-                Olá, @Player, você é o novo capitão,
+                Olá, @Player, tu és o novo capitão,
 
                 Escrevi esse pergaminho no meu
                 leito de morte para que você
@@ -33,15 +33,16 @@ public class Book {
     String page2 =
       """
                 Para completar a missão
-                você precisa lidear a tripulação
-                para coletar alguns recursos,
-                você tem apenas 3 dias
+                você precisa guiar a tripulação
+                na coleta de alguns recursos,
+                você tem apenas 3 dias para fazer isso,
+                caso contrário a missão será fracassada.
                 """;
     String page3 = bookResourcesPage(resources);
     String page4 =
       """
-        Se você conseguir a façanha de coletar esses items,
-        você deve colocar os items no baú do navio.
+        Com essa situação acho dificíl que você retorne ao navio com vida,
+        mas se aconter, coloque os items no baú central do navio.
       """;
     bookMeta.addPage(page1, page2, page3, page4);
     NamespacedKey key = new NamespacedKey("minebirds", "unique_id");
@@ -54,7 +55,7 @@ public class Book {
 
   private static String bookResourcesPage(Document resources) {
     List<String> all = new ArrayList<>();
-    all.add("Itens requeridos: \n");
+    all.add("Itens necessários para seguir viagem: \n");
     resources
       .keySet()
       .forEach(key -> {

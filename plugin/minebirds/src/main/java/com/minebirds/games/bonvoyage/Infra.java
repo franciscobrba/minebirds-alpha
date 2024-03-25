@@ -9,7 +9,7 @@ public class Infra {
   public static void buildShip(String key, Location givenLocation) {
     Schematics.build(
       givenLocation,
-      "boat.v4",
+      "boat.v7",
       b -> {
         Bukkit.getLogger().info("Creating boat");
         if (b.getType().toString().equals("CHEST")) {

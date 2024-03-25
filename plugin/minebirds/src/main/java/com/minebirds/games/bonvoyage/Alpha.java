@@ -5,6 +5,7 @@ import com.minebirds.helpers.Anailma;
 import com.minebirds.utils.Lists;
 import com.minebirds.utils.Numbers;
 import java.util.*;
+import org.antlr.v4.parse.ANTLRParser.parserRule_return;
 import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -36,13 +37,17 @@ public class Alpha {
     return Bukkit.getServer().getWorld(worldFolder);
   }
 
-  public static Location setSpawn(World givenWorld) {
+  public static Location getOcean(World givenWorld) {
     Location location = Anailma.findOcean(
       givenWorld.getSpawnLocation(),
       givenWorld
     );
-    givenWorld.setSpawnLocation(location);
     return location;
+  }
+
+  public static Location setSpawn(World givenWorld, Location givenLocation) {
+    givenWorld.setSpawnLocation(givenLocation);
+    return givenLocation;
   }
 
   public static Player choseCaptain(Document game, String key) {

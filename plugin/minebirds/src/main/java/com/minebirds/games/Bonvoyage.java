@@ -17,8 +17,9 @@ public class Bonvoyage {
   public static void create(Player player) {
     String key = Alpha.createDatabaseEntry(player);
     World world = Alpha.buildWorld(key);
-    Location spawn = Alpha.setSpawn(world);
-    Infra.buildShip(key, spawn);
+    Location ocean = Alpha.getOcean(world);
+    Infra.buildShip(key, ocean);
+    Alpha.setSpawn(world, ocean.clone().add(6, 2, 13));
     sendCreatorToLobby(player, key);
   }
 
