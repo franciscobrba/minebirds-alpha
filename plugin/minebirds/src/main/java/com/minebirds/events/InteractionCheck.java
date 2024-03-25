@@ -1,13 +1,10 @@
 package com.minebirds.events;
 
 import com.minebirds.Database;
-import com.minebirds.games.Bonvoyage;
 import com.minebirds.games.bonvoyage.Alpha;
 import com.minebirds.games.bonvoyage.Events;
 import com.minebirds.games.bonvoyage.Requirements;
-import java.util.*;
 import org.bson.Document;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Chest;
 import org.bukkit.event.EventHandler;
@@ -25,7 +22,7 @@ public class InteractionCheck implements Listener {
 
   @EventHandler
   public void onPlayerDie(PlayerDeathEvent event) {
-    Events.die(this.key, event.getEntity().getPlayer());
+    Events.diedPlayer(this.key, event.getEntity().getPlayer());
   }
 
   @EventHandler
@@ -43,7 +40,7 @@ public class InteractionCheck implements Listener {
     ) {
       boolean won = Requirements.hasAllRequiredItems(
         chest,
-        convertDocumentToMap(
+        Alpha.convertDocumentToMap(
           Document.parse(game.get("requirements").toString())
         )
       );
@@ -51,13 +48,5 @@ public class InteractionCheck implements Listener {
         Events.victory(this.key);
       }
     }
-  }
-
-  public static Map<String, Integer> convertDocumentToMap(Document document) {
-    Map<String, Integer> map = new HashMap<>();
-    for (Map.Entry<String, Object> entry : document.entrySet()) {
-      map.put(entry.getKey(), Integer.valueOf(entry.getValue().toString()));
-    }
-    return map;
   }
 }

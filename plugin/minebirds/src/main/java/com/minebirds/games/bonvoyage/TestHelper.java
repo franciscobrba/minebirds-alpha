@@ -22,6 +22,13 @@ public class TestHelper {
       });
   }
 
+  public static void fillPlayer(Player player) {
+    for (int i = 0; i < 36; i++) {
+      ItemStack item = new ItemStack(Material.LAVA_BUCKET, 64);
+      player.getInventory().addItem(item);
+    }
+  }
+
   public static Document craftRequirementsList() {
     return new Document("SAND", 1);
   }

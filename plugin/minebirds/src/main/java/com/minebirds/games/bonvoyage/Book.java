@@ -33,13 +33,17 @@ public class Book {
     String page2 =
       """
                 Para completar a missão
-                você precisam encontrar
-                alguns recursos nas
-                redondezas, guie sua tripulação e entregue os seguintes items no baú do barco
-
+                você precisa lidear a tripulação
+                para coletar alguns recursos,
+                você tem apenas 3 dias
                 """;
     String page3 = bookResourcesPage(resources);
-    bookMeta.addPage(page1, page2, page3);
+    String page4 =
+      """
+        Se você conseguir a façanha de coletar esses items,
+        você deve colocar os items no baú do navio.
+      """;
+    bookMeta.addPage(page1, page2, page3, page4);
     NamespacedKey key = new NamespacedKey("minebirds", "unique_id");
     bookMeta
       .getPersistentDataContainer()
@@ -50,9 +54,8 @@ public class Book {
 
   private static String bookResourcesPage(Document resources) {
     List<String> all = new ArrayList<>();
-    all.add("Itens necessários para seguir viagem: \n");
+    all.add("Itens requeridos: \n");
     resources
-      .toBsonDocument()
       .keySet()
       .forEach(key -> {
         all.add(BrazilianTokens.translate(key) + " = " + resources.get(key));

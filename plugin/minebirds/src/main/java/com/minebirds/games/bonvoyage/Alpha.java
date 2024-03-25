@@ -11,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class Alpha {
 
@@ -22,6 +23,7 @@ public class Alpha {
     Database.createGame(
       new Document("key", key)
         .append("creator", player.getName())
+        .append("status", "OPENED")
         .append("players", players)
         .append("survivors", players)
     );
@@ -47,6 +49,7 @@ public class Alpha {
     String choosen = Lists.getRandomItem(
       game.getList("survivors", String.class)
     );
+    Bulk.message(playersFromGame(game), choosen + " é o novo capitão...");
     Database.updateGameProp(key, "captain", choosen);
     return Bukkit.getPlayer(choosen);
   }
@@ -72,5 +75,36 @@ public class Alpha {
 
   public static List<String> playersFromGame(Document game) {
     return game.getList("players", String.class);
+  }
+
+  public static Boolean gameCompleted(String key) {
+    String status = Database.getGameProp(key, "status").toString();
+    return status.equals("VICTORY") || status.equals("LOST");
+  }
+
+  public static void sendBookToNewCaptain(String key) {
+    Document game = Database.findGame(key);
+    Player player = Bukkit.getPlayer(game.get("captain").toString());
+    ItemStack book = Book.create(
+      Document.parse(game.get("requirements").toString()),
+      player.getName()
+    );
+    if (player.getInventory().firstEmpty() == -1) {
+      getWorld(key).dropItem(player.getLocation(), book);
+    } else {
+      player.getInventory().addItem(book);
+    }
+  }
+
+  public static Map<String, Integer> convertDocumentToMap(Document document) {
+    Map<String, Integer> map = new HashMap<>();
+    for (Map.Entry<String, Object> entry : document.entrySet()) {
+      map.put(entry.getKey(), Integer.valueOf(entry.getValue().toString()));
+    }
+    return map;
+  }
+
+  public static World getLobby() {
+    return Bukkit.getWorld("lobby");
   }
 }

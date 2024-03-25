@@ -28,6 +28,7 @@ public class Bonvoyage {
     if (game != null) {
       if (!GameDoc.playerIsInGame(playerName, key)) {
         Database.addToGameList(key, "players", playerName);
+        Database.addToGameList(key, "survivors", playerName);
         sendPlayerToLobby(player);
       } else {
         player.sendMessage("You already joined this game!");

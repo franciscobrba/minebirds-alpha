@@ -38,6 +38,15 @@ public class Bulk {
     );
   }
 
+  public static void message(List<String> players, String message) {
+    action(
+      players,
+      player -> {
+        player.sendMessage(message);
+      }
+    );
+  }
+
   public static void clear(List<String> players) {
     action(
       players,

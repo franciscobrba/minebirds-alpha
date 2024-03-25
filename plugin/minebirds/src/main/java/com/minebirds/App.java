@@ -1,11 +1,10 @@
 package com.minebirds;
 
-import com.minebirds.events.InteractionCheck;
 import com.minebirds.events.PlayerJoin;
 import com.minebirds.events.PlayerQuit;
 import com.minebirds.games.Bonvoyage;
+import com.minebirds.games.bonvoyage.TestHelper;
 import java.util.*;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
