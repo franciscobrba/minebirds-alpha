@@ -19,7 +19,7 @@ public class Anailma {
     int ty = target.getBlockY();
     int tz = target.getBlockZ();
     int attempts = 100;
-    int skip = 300;
+    int skip = 30;
     int limit = tx + (skip * attempts);
     for (int x = tx; x < limit; x = x + skip) {
       Bukkit.getLogger().info("Looking for a ocean..");
