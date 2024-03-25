@@ -69,9 +69,9 @@ public class Tools {
 
   public static int calcTime(long tick) {
     // 1 day = 1m
-    int base = 100;
+    // int base = 100;
     // 1 day = 20m
-    // int base = 1000;
+    int base = 1000;
 
     // Garante que o tick esteja no intervalo de 0 a 23999
     long normalizedTick = tick % 24000;
