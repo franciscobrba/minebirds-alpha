@@ -10,7 +10,7 @@ public class Infra {
     Bukkit.getLogger().info("Creating boat");
     Schematics.build(
       givenLocation,
-      "boat.v7",
+      "boat.top",
       b -> {
         if (b.getType().toString().equals("CHEST")) {
           Location chestLocation = b.getLocation();
