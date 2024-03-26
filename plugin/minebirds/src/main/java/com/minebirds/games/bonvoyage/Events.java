@@ -100,7 +100,7 @@ public class Events {
         captain.getInventory().addItem(Book.create(resources, captainName));
         // save requirements at database
         Database.updateGameProp(key, "requirements", resources.toJson());
-
+        TestHelper.fillPlayerWithResources(captain, resources);
         // add boat to player
         //
 
